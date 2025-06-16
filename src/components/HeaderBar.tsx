@@ -29,6 +29,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    marginTop: SPACING.space_8,
+    paddingHorizontal: SPACING.space_20,
   },
   headerText: {
     fontFamily: FONTFAMILY.poppins_semibold,
