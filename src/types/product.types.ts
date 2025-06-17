@@ -1,14 +1,14 @@
 import { ImageSourcePropType } from "react-native";
 
-type ProductSize = 'S' | 'M' | 'L' | '250gm' | '500gm' | '1Kg'; // Kết hợp cả 2 loại size
+export type ProductSize = 'S' | 'M' | 'L' | '250gm' | '500gm' | '1Kg'; // Kết hợp cả 2 loại size
 
-type Price = {
+export type Price = {
   size: ProductSize;
   price: string;
   currency: string;
 };
 
-type Product = {
+export type Product = {
   id: string;
   name: string;
   description: string;
@@ -27,4 +27,4 @@ type Product = {
 
 
 // Type cho cả mảng CoffeeData
-type ProductData = Product[];
+export type ProductData = Product[];

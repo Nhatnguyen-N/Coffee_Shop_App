@@ -22,8 +22,9 @@ import {
 import HeaderBar from "../components/HeaderBar";
 import { Ionicons } from "@expo/vector-icons";
 import CoffeeCard from "../components/CoffeeCard";
+import { ProductData } from "../types/product.types";
 
-const getCategoriesFromData = (data: any) => {
+const getCategoriesFromData = (data: ProductData) => {
   let temp: any = {};
   for (let i = 0; i < data.length; i++) {
     if (temp[data[i].name] === undefined) {
@@ -47,8 +48,8 @@ const getCoffeeList = (category: string, data: any) => {
 };
 
 const HomeScreen = ({ navigation }: any) => {
-  const CoffeeList = useStore((state: any) => state.CoffeeList);
-  const BeanList = useStore((state: any) => state.BeanList);
+  const CoffeeList: ProductData = useStore((state: any) => state.CoffeeList);
+  const BeanList: ProductData = useStore((state: any) => state.BeanList);
   const [categories, setCategories] = useState(
     getCategoriesFromData(CoffeeList)
   );
@@ -244,7 +245,6 @@ const HomeScreen = ({ navigation }: any) => {
           ]}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => {
-            console.log("item", item);
             return (
               <TouchableOpacity
                 onPress={() => {

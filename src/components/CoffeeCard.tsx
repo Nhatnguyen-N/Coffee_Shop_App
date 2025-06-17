@@ -2,6 +2,7 @@ import {
   Dimensions,
   ImageBackground,
   ImageProps,
+  ImageSourcePropType,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -18,6 +19,7 @@ import {
 } from "../theme/theme";
 import { Ionicons } from "@expo/vector-icons";
 import BGIcon from "./BGIcon";
+import { Price } from "../types/product.types";
 
 const CARD_WIDTH = Dimensions.get("window").width * 0.32;
 interface CoffeeCardProps {
@@ -25,11 +27,11 @@ interface CoffeeCardProps {
   index: number;
   type: string;
   roasted: string;
-  imagelink_square: ImageProps;
+  imagelink_square: ImageSourcePropType;
   name: string;
   special_ingredient: string;
   average_rating: number;
-  price: any;
+  price: Price;
   buttonPressHandler: any;
 }
 

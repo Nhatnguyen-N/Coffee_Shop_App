@@ -11,6 +11,7 @@ const HeaderBar = ({ title }: HeaderBarProps) => {
   return (
     <View style={styles.headerContainer}>
       <GradientBGIcon
+        iconPack="Ionicons"
         color={COLORS.primaryLightGreyHex}
         size={FONTSIZE.size_18}
         name="menu"

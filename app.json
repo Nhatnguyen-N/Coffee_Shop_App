@@ -7,9 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "assetBundlePatterns": [
-      "./assets/icons/*"
-    ],
+    "assetBundlePatterns": ["./assets/icons/*"],
     "scheme": "coffeeshopapp",
     "ios": {
       "supportsTablet": true,
@@ -36,6 +34,12 @@
       ],
       "react-native-edge-to-edge",
       "expo-font"
+    ],
+    "fonts": [
+      {
+        "fontFamily": "app_icons",
+        "src": "./assets/fonts/app_icons.ttf"
+      }
     ]
   }
 }

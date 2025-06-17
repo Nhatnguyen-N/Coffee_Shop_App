@@ -7,6 +7,7 @@ import TabNavigator from "./navigators/TabNavigator";
 import { useEffect, useState } from "react";
 import { FONTFAMILY } from "./theme/theme";
 import { useFonts } from "expo-font";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 const Stack = createNativeStackNavigator();
 // SplashScreen.preventAutoHideAsync();
 export function App() {
@@ -28,24 +29,26 @@ export function App() {
   }, [fontsLoaded]);
   if (!fontsLoaded) return null;
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen
-          name="Tab"
-          component={TabNavigator}
-          options={{ animation: "slide_from_bottom" }}
-        />
-        <Stack.Screen
-          name="Details"
-          component={DetailsScreen}
-          options={{ animation: "slide_from_bottom" }}
-        />
-        <Stack.Screen
-          name="Payment"
-          component={PaymentScreen}
-          options={{ animation: "slide_from_bottom" }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen
+            name="Tab"
+            component={TabNavigator}
+            options={{ animation: "slide_from_bottom" }}
+          />
+          <Stack.Screen
+            name="Details"
+            component={DetailsScreen}
+            options={{ animation: "slide_from_bottom" }}
+          />
+          <Stack.Screen
+            name="Payment"
+            component={PaymentScreen}
+            options={{ animation: "slide_from_bottom" }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }

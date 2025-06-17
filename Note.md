@@ -2,5 +2,6 @@ link video :https://www.youtube.com/watch?v=W1Co2M-gsQE&list=PLIh7Cum07cvbd4UYpj
 
 day 1:   1:38:54.
 day 2:   3:37:26.
+day 3:   4:43:05.
  
  navigation with react navigation.

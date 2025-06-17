@@ -2,23 +2,58 @@ import { StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { COLORS, SPACING } from "../theme/theme";
-import { Ionicons } from "@expo/vector-icons";
-const names = [{ name: "menu" }, { name: "home" }];
-interface GradientBGIconProps {
-  name?: string;
+import {
+  AntDesign,
+  FontAwesome,
+  Ionicons,
+  MaterialIcons,
+} from "@expo/vector-icons";
+
+type IconProps =
+  | {
+      iconPack: "Ionicons";
+      name: React.ComponentProps<typeof Ionicons>["name"];
+    }
+  | {
+      iconPack: "MaterialIcons";
+      name: React.ComponentProps<typeof MaterialIcons>["name"];
+    }
+  | {
+      iconPack: "FontAwesome";
+      name: React.ComponentProps<typeof FontAwesome>["name"];
+    }
+  | {
+      iconPack: "AntDesign";
+      name: React.ComponentProps<typeof AntDesign>["name"];
+    };
+
+type GradientBGIconProps = IconProps & {
   color?: string;
   size?: number;
-}
-const GradientBGIcon = ({ name, color, size }: GradientBGIconProps) => {
-  const [value, setValue] = useState("");
-  useEffect(() => {
-    const nameSelected = names.map((i) => {
-      if (i.name === name) {
-        setValue(name);
-      }
-    });
-    if (!nameSelected) return;
-  }, [name]);
+  gradientColors?: string[];
+};
+
+const GradientBGIcon = (props: GradientBGIconProps) => {
+  const {
+    iconPack,
+    name,
+    color = "#FFF",
+    size = 24,
+    gradientColors = ["#FF9800", "#F44336"],
+  } = props;
+
+  const getIconComponent = () => {
+    switch (iconPack) {
+      case "Ionicons":
+        return <Ionicons name={name} color={color} size={size} />;
+      case "MaterialIcons":
+        return <MaterialIcons name={name} color={color} size={size} />;
+      case "FontAwesome":
+        return <FontAwesome name={name} color={color} size={size} />;
+      case "AntDesign":
+        return <AntDesign name={name} color={color} size={size} />;
+    }
+  };
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -27,11 +62,7 @@ const GradientBGIcon = ({ name, color, size }: GradientBGIconProps) => {
         colors={[COLORS.primaryGreyHex, COLORS.primaryBlackHex]}
         style={styles.linearGradientBG}
       >
-        <Ionicons
-          name={value === "menu" ? "menu" : "home"}
-          color={color}
-          size={size}
-        />
+        {getIconComponent()}
       </LinearGradient>
     </View>
   );
