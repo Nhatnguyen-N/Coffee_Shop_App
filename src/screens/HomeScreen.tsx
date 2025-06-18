@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  ToastAndroid,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -22,7 +23,9 @@ import {
 import HeaderBar from "../components/HeaderBar";
 import { Ionicons } from "@expo/vector-icons";
 import CoffeeCard from "../components/CoffeeCard";
-import { ProductData } from "../types/product.types";
+import { Product, ProductData } from "../types/product.types";
+import { AddToCartHandlerProps } from "./DetailsScreen";
+import Toast from "react-native-toast-message";
 
 const getCategoriesFromData = (data: ProductData) => {
   let temp: any = {};
@@ -64,6 +67,8 @@ const HomeScreen = ({ navigation }: any) => {
 
   const tabBarHeight = useBottomTabBarHeight();
   const ListRef = useRef<FlatList>(null);
+  const addToCart = useStore((state: any) => state.addToCart);
+  const calculateCartPrice = useStore((state: any) => state.calculateCartPrice);
   const searchCoffee = (search: string) => {
     if (search !== "") {
       ListRef?.current?.scrollToOffset({
@@ -87,7 +92,33 @@ const HomeScreen = ({ navigation }: any) => {
     setSortedCoffee([...CoffeeList]);
     setSearchText("");
   };
-  const CoffeCardAddToCart = () => {};
+  const CoffeCardAddToCart = ({
+    id,
+    index,
+    name,
+    roasted,
+    imagelink_square,
+    special_ingredient,
+    type,
+    prices,
+  }: Product) => {
+    addToCart({
+      id,
+      index,
+      name,
+      roasted,
+      imagelink_square,
+      special_ingredient,
+      type,
+      prices: prices,
+    });
+    calculateCartPrice();
+    Toast.show({
+      type: "success",
+      text1: `${name} is Add to Cart`,
+      position: "bottom",
+    });
+  };
 
   return (
     <View style={styles.screenContainer}>

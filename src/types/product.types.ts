@@ -3,9 +3,10 @@ import { ImageSourcePropType } from "react-native";
 export type ProductSize = 'S' | 'M' | 'L' | '250gm' | '500gm' | '1Kg'; // Kết hợp cả 2 loại size
 
 export type Price = {
-  size: ProductSize;
-  price: string;
-  currency: string;
+  size?: ProductSize;
+  price?: string;
+  currency?: string;
+  quantity?: number;
 };
 
 export type Product = {
@@ -24,7 +25,17 @@ export type Product = {
   type: 'Coffee' | 'Bean'; // Giới hạn giá trị cụ thể
   index: number;
 };
-
+export type Cart = {
+  id: string,
+  index: number,
+  name: string,
+  roasted: boolean,
+  imagelink_square: ImageSourcePropType,
+  special_ingredient: string,
+  type: 'Coffee' | 'Bean';
+  ItemPrice: string,
+  prices: Price[],
+}
 
 // Type cho cả mảng CoffeeData
 export type ProductData = Product[];

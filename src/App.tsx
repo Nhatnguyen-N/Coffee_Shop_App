@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { FONTFAMILY } from "./theme/theme";
 import { useFonts } from "expo-font";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import Toast from "react-native-toast-message";
 const Stack = createNativeStackNavigator();
 // SplashScreen.preventAutoHideAsync();
 export function App() {
@@ -49,6 +50,7 @@ export function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
+      <Toast />
     </SafeAreaProvider>
   );
 }

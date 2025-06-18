@@ -23,6 +23,19 @@ import ImageBackgroundInfo, {
 import { Price, Product } from "../types/product.types";
 import PaymentFooter from "../components/PaymentFooter";
 
+export type AddToCartHandlerProps = Pick<
+  Product,
+  | "id"
+  | "index"
+  | "name"
+  | "roasted"
+  | "imagelink_square"
+  | "special_ingredient"
+  | "type"
+> & {
+  price: Price;
+};
+
 const DetailsScreen = ({ navigation, route }: any) => {
   const ItemofIndex: Product = useStore((state: any) =>
     route.params.type === "Coffee" ? state.CoffeeList : state.BeanList
@@ -53,7 +66,7 @@ const DetailsScreen = ({ navigation, route }: any) => {
     special_ingredient,
     type,
     price,
-  }: any) => {
+  }: AddToCartHandlerProps) => {
     addToCart({
       id,
       index,
@@ -65,7 +78,7 @@ const DetailsScreen = ({ navigation, route }: any) => {
       prices: [{ ...price, quantity: 1 }],
     });
     calculateCartPrice();
-    navigation.navigate("Cart");
+    navigation.navigate("Tab", { screen: "Cart" });
   };
   return (
     <View style={styles.screenContainer}>
@@ -163,7 +176,7 @@ const DetailsScreen = ({ navigation, route }: any) => {
               imagelink_square: ItemofIndex.imagelink_square,
               special_ingredient: ItemofIndex.special_ingredient,
               type: ItemofIndex.type,
-              prices: price,
+              price: price,
             });
           }}
         />
