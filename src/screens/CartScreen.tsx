@@ -10,7 +10,7 @@ import React from "react";
 import { Cart, ProductData } from "../types/product.types";
 import { useStore } from "../store/store";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
-import { COLORS } from "../theme/theme";
+import { COLORS, SPACING } from "../theme/theme";
 import HeaderBar from "../components/HeaderBar";
 import EmptyListAnimation from "../components/EmptyListAnimation";
 import PaymentFooter from "../components/PaymentFooter";
@@ -27,10 +27,9 @@ const CartScreen = ({ navigation, route }: any) => {
   );
   const calculateCartPrice = useStore((state: any) => state.calculateCartPrice);
   const tabBarHeight = useBottomTabBarHeight();
-  console.log("cartList", cartList.length);
 
   const buttonPressHandler = () => {
-    navigation.push("Payment");
+    navigation.push("Payment", { amount: cartPrice });
   };
   const incrementCartItemQuantityHandler = (id: string, size: string) => {
     incrementCartItemQuantity(id, size);
@@ -119,5 +118,8 @@ const styles = StyleSheet.create({
   itemContainer: {
     flex: 1,
   },
-  listItemContainer: {},
+  listItemContainer: {
+    paddingHorizontal: SPACING.space_20,
+    gap: SPACING.space_20,
+  },
 });

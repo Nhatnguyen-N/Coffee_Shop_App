@@ -15,6 +15,11 @@ export const useStore = create(
       FavoritesList: [],
       CartList: [] as Cart[],
       OrderHistoryList: [],
+      setFavoutiesInit: () => set(
+        produce(state => {
+          state.FavoritesList = []
+        })
+      ),
       addToCart: (cartItem: Cart) =>
         set(
           produce(state => {

@@ -4,5 +4,6 @@ day 1:   1:38:54.
 day 2:   3:37:26.
 day 3:   4:43:05.
 day 4:   6:14:53.
+day 5:   7:30:47.
  
  navigation with react navigation.
