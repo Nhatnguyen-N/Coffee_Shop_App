@@ -36,6 +36,11 @@ export type Cart = {
   ItemPrice: string,
   prices: Price[],
 }
-
+export type Order = {
+  CartList: Cart[],
+  CartListPrice: string; // Giá trị dạng string ví dụ "4.29"
+  OrderDate: string; // Date string dạng "Thu Jun 19 2025 19:22:50"
+}
+export type OrderHistoryList = Order[];
 // Type cho cả mảng CoffeeData
 export type ProductData = Product[];
